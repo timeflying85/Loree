@@ -26,10 +26,10 @@ public class PainController {
     }
 
 
-    @GetMapping("/{id:[0-9]+}")
-    public PainDTO getOne(@PathVariable long id){
+    @GetMapping(/*"/{nom:^[a-zA-Z]+$}")*/)
+    public PainDTO getOne(@RequestParam String nom){
 
-        return painService.getOne(id);
+        return painService.getOne(nom);
 
     }
 
@@ -40,13 +40,22 @@ public class PainController {
 
     }
 
-//    @PostMapping("/add")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public ResponseEntity<?> create(@RequestBody PainInsertForm painInsertForm) {
-//        try {
-//
-//        }
-//    }
+    @GetMapping({"/{id:[0-9]+}/delete"})
+    public void delete(@PathVariable long id){
+        painService.delete(id);
+    }
+
+
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> create(@RequestBody PainInsertForm painInsertForm) {
+        try {
+            painService.createPain(painInsertForm);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
 
 }

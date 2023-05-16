@@ -1,6 +1,5 @@
 package be.projet.Loree.models.dto;
 
-import be.projet.Loree.models.entity.Ingredient;
 import be.projet.Loree.models.entity.Pain;
 import lombok.Data;
 import lombok.Builder;
@@ -14,7 +13,7 @@ public class PainDTO {
     private String nom;
     private String description;
     private String prix;
-    private List<Ingredient> ingredients;
+    private List<IngredientDTO> ingredients;
 
     public static PainDTO from(Pain entity){
         if(entity == null)
@@ -25,7 +24,7 @@ public class PainDTO {
                 .nom(entity.getNom())
                 .prix(entity.getPrix())
                 .description(entity.getDescription())
-                .ingredients(entity.getIngredients())
+                .ingredients(entity.getIngredients().stream().map(IngredientDTO::from).toList())
                 .build();
 
     }
