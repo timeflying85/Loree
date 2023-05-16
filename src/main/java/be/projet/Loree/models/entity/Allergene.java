@@ -21,6 +21,9 @@ public class Allergene {
     @Column(name = "nom",nullable = false)
     private String nom;
 
+    @Column(name = "logo")
+    private String logo;
+
     @ManyToMany(mappedBy = "allergenes")
     private List<Ingredient> ingredients = new ArrayList<>();
 
