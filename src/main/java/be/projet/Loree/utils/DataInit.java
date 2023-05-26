@@ -27,14 +27,16 @@ public class DataInit implements InitializingBean {
     private final EvenementRepository evenementRepository;
 
     private final UtilisateurRepository utilisateurRepository;
+    private final ImagePainRepository imagePainRepository;
 
-    public DataInit(PainRepository painRepository, CommandeRepository commandeRepository, IngredientRepository ingredientRepository, AllergeneRepository allergeneRepository, EvenementRepository evenementRepository, UtilisateurRepository utilisateurRepository) {
+    public DataInit(PainRepository painRepository, CommandeRepository commandeRepository, IngredientRepository ingredientRepository, AllergeneRepository allergeneRepository, EvenementRepository evenementRepository, UtilisateurRepository utilisateurRepository, ImagePainRepository imagePainRepository) {
         this.painRepository = painRepository;
         this.commandeRepository = commandeRepository;
         this.ingredientRepository = ingredientRepository;
         this.allergeneRepository = allergeneRepository;
         this.evenementRepository = evenementRepository;
         this.utilisateurRepository = utilisateurRepository;
+        this.imagePainRepository = imagePainRepository;
     }
 
 
@@ -101,6 +103,12 @@ public class DataInit implements InitializingBean {
         pain.setDescription("Pavé dense et nourrissant. \n" +
                 "Il a une mie brune aux alvéoles irrégulières, un goût acidulé de levain prononcé. ");
         pain.setIngredients(ListIngredient);
+
+        ImagePain image2 = new ImagePain();
+        image2.setCheminImage("fromentComplet.jpg");
+        image2 = imagePainRepository.save(image2);
+
+        pain.setImagePain(image2);
         pain = painRepository.save(pain);
 
         Pain pain1 = new Pain();
@@ -110,7 +118,14 @@ public class DataInit implements InitializingBean {
         pain1.setDescription("Subtil et passe-partout. \n" +
                 "Il a une mie blanche, dense, régulière et un goût de levain doux : c’est le préféré des boîtes à tartines.");
         pain1.setIngredients(ListIngredient1);
+
+        ImagePain image = new ImagePain();
+        image.setCheminImage("epeautreSemiComplet.jpg");
+        image = imagePainRepository.save(image);
+
+        pain1.setImagePain(image);
         pain1 = painRepository.save(pain1);
+
 
         Pain pain2 = new Pain();
         pain2.setId(3);
@@ -119,7 +134,16 @@ public class DataInit implements InitializingBean {
         pain2.setDescription("Gourmandise pleine de surprises.\n" +
                 " Il a une mie grise aux alvéoles régulières, un goût de levain masqué derrière celui prononcé des graines.");
         pain2.setIngredients(ListIngredient1);
+
+
+        ImagePain image1 = new ImagePain();
+        image1.setCheminImage("fromentAuxGraines.jpg");
+        image1 = imagePainRepository.save(image1);
+
+        pain2.setImagePain(image1);
         pain2 = painRepository.save(pain2);
+
+
 
         Pain pain3 = new Pain();
         pain3.setId(4);
@@ -128,6 +152,12 @@ public class DataInit implements InitializingBean {
         pain3.setDescription("Denrée précieuse pour ceux qui ont une légère intolérance au gluten (il en contient mais d'une qualité différente). \n" +
                 "Il a une mie serrée dorée et humide, un goût fleuri et légèrement épicé surprenant.");
         pain3.setIngredients(ListIngredient);
+
+        ImagePain image3 = new ImagePain();
+        image3.setCheminImage("petitEpeautre.jpg");
+        image3 = imagePainRepository.save(image3);
+
+        pain3.setImagePain(image3);
         pain3 = painRepository.save(pain3);
 
         Pain pain4 = new Pain();
@@ -137,6 +167,12 @@ public class DataInit implements InitializingBean {
         pain4.setDescription("Classique pour toutes occasions. \n" +
                 "Il a une mie grise aux alvéoles irrégulières, au goût tendre et au levain doux.");
         pain4.setIngredients(ListIngredient);
+
+        ImagePain image4 = new ImagePain();
+        image4.setCheminImage("fromentSemiComplet.jpg");
+        image4 = imagePainRepository.save(image4);
+
+        pain4.setImagePain(image4);
         pain4 = painRepository.save(pain4);
 
         Commande commande = new Commande();

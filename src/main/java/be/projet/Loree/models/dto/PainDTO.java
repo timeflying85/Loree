@@ -1,5 +1,6 @@
 package be.projet.Loree.models.dto;
 
+import be.projet.Loree.models.entity.ImagePain;
 import be.projet.Loree.models.entity.Pain;
 import lombok.Data;
 import lombok.Builder;
@@ -13,6 +14,7 @@ public class PainDTO {
     private String nom;
     private String description;
     private String prix;
+    private ImagePainDTO imagePain;
     private List<IngredientDTO> ingredients;
 
     public static PainDTO from(Pain entity){
@@ -21,6 +23,7 @@ public class PainDTO {
 
         return PainDTO.builder()
                 .id(entity.getId())
+                .imagePain(ImagePainDTO.builder().id(entity.getImagePain().getId()).cheminImage(entity.getImagePain().getCheminImage()).build())
                 .nom(entity.getNom())
                 .prix(entity.getPrix())
                 .description(entity.getDescription())

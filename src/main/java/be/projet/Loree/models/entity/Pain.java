@@ -1,12 +1,14 @@
 package be.projet.Loree.models.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,10 @@ public class Pain {
 
     @Column(name = "prix", nullable = false)
     private String prix;
+
+    @OneToOne( cascade = CascadeType.PERSIST )
+    @JoinColumn(name = "pain_image_id")
+    private ImagePain imagePain;
 
     @ManyToMany
     @JoinTable(name = "pain_ingredient",
