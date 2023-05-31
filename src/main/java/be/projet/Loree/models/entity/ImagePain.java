@@ -21,7 +21,7 @@ public class ImagePain {
     @OneToOne(mappedBy = "imagePain")
     private Pain pain;
 
-        @Column(name = "chemin"/*, nullable = false*/)
+    @Column(name = "chemin", nullable = false)
     private String cheminImage;
 
 
